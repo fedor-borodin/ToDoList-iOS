@@ -11,14 +11,14 @@ import UIKit
 var itemsList = [Item]()
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
+    
     @IBOutlet weak var tableView: UITableView!
     
     // get number of rows
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return itemsList.count
     }
-
+    
     // fill cells with data
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .default, reuseIdentifier: "cell")
@@ -45,7 +45,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             } catch let error {
                 NSLog("Error writing to persistence: \(error)")
             }
-
         }
     }
     
@@ -55,13 +54,38 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             itemsList.remove(at: indexPath.row)
             
             tableView.reloadData()
-
+            
             do {
                 try itemsList.writeToPersistense()
             } catch let error {
                 NSLog("Error writing to persistence: \(error)")
             }
-
+        }
+    }
+    
+    // delete all Tasks
+    @IBAction func deleteAllPressed(_ sender: UIBarButtonItem) {
+        if itemsList.count > 0 {
+            let dialogAction = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+            
+            let deleteAction = UIAlertAction(title: "Delete All", style: .destructive, handler: {(alertAction) -> Void in
+                itemsList.removeAll()
+                
+                self.tableView.reloadData()
+                
+                do {
+                    try itemsList.writeToPersistense()
+                } catch let error {
+                    NSLog("Error writing to persistence: \(error)")
+                }
+            })
+            
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            
+            dialogAction.addAction(deleteAction)
+            dialogAction.addAction(cancelAction)
+            
+            self.present(dialogAction, animated: true, completion: nil)
         }
     }
     
@@ -87,7 +111,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             }
         }
     }
-
+    
     // when app goes to background
     @objc
     public func applicationDidEnterBackground(_ notification: NSNotification) {
@@ -102,7 +126,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     // when the main view appears on the screen
     override func viewDidAppear(_ animated: Bool) {
         tableView.reloadData()

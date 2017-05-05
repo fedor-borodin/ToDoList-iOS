@@ -58,6 +58,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="To-Do List" id="VmN-56-yBf">
+                        <barButtonItem key="leftBarButtonItem" title="Delete All" id="vmD-hb-lbt">
+                            <connections>
+                                <action selector="deleteAllPressed:" destination="BYZ-38-t0r" id="vgg-DJ-QEm"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="UA5-2p-72T">
                             <connections>
                                 <segue destination="Lic-7p-v9h" kind="presentation" id="yKw-ej-UTS"/>
