@@ -59,7 +59,7 @@
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="LoR-OK-WSt">
                                             <connections>
-                                                <segue destination="WRE-Nk-BDV" kind="show" id="6eU-XB-tZN"/>
+                                                <segue destination="WRE-Nk-BDV" kind="presentation" modalPresentationStyle="formSheet" modalTransitionStyle="coverVertical" id="6eU-XB-tZN"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -98,7 +98,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2hx-La-H3b">
-                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <items>
                                     <navigationItem title="Add New Task" id="8bw-vw-71d">
                                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="1zf-Ft-gsA">
@@ -115,7 +115,7 @@
                                 </items>
                             </navigationBar>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type something you need to do" textAlignment="natural" minimumFontSize="22" translatesAutoresizingMaskIntoConstraints="NO" id="rkp-Df-r6j">
-                                <rect key="frame" x="0.0" y="64" width="320" height="30"/>
+                                <rect key="frame" x="0.0" y="44" width="320" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>

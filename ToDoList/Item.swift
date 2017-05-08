@@ -8,9 +8,10 @@
 
 import Foundation
 
+// class describing a ToDo List Item (a Task)
 class Item : NSObject, NSCoding {
-    var title: String
-    var status: Bool
+    var title: String                   // name of the task
+    var status: Bool                    // status of the task
     
     public init(toDo title: String) {
         self.title = title
@@ -37,6 +38,7 @@ class Item : NSObject, NSCoding {
     }
 }
 
+// extension of ToDo List Item class to work with a collection of Items (ex. [Item])
 extension Collection where Iterator.Element == Item {
     private static func persistencePath() -> URL? {
         let url = try? FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true)

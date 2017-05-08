@@ -41,6 +41,7 @@ class AddNewViewController : UIViewController, UITextFieldDelegate {
         self.dismiss(animated: true, completion: nil)
     }
     
+    // if user finished typing in a task with Return button pressed on a keyboard, we also save
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if let itemText = addItemField.text {
             itemsList.append(Item(toDo: itemText))
